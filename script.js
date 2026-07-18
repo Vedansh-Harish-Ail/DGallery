@@ -740,22 +740,28 @@ function initInstagramScroll() {
     // Register ScrollTrigger plugin
     gsap.registerPlugin(ScrollTrigger);
 
+    gsap.set(container, { transformOrigin: "bottom center" });
+
     gsap.fromTo(container, 
         {
-            rotateX: 16,
-            scale: 0.9,
-            z: -50
+            rotateX: 55, // tilted back heavily (sleeping/lying position)
+            scale: 0.82,
+            z: -80,
+            y: 80,
+            boxShadow: "0px 10px 15px rgba(0, 0, 0, 0.12), 0px 15px 30px rgba(0, 0, 0, 0.08)"
         },
         {
-            rotateX: 0,
+            rotateX: 0, // standing fully upright
             scale: 1,
             z: 0,
-            ease: 'power1.out',
+            y: 0,
+            boxShadow: "0px 25px 50px -12px rgba(0, 0, 0, 0.25), 0px 50px 100px -20px rgba(0, 0, 0, 0.15)",
+            ease: "power2.out",
             scrollTrigger: {
                 trigger: '.instagram-section',
-                start: 'top bottom', // Start when the top of the section enters the bottom of the viewport
-                end: 'bottom center', // End when the bottom of the section reaches the center of the viewport
-                scrub: 1 // smooth scrubbing (1 second delay)
+                start: 'top bottom', // starts as soon as top of section enters viewport bottom
+                end: 'bottom center', // ends when bottom of section reaches viewport center
+                scrub: 1.2 // smooth interpolation
             }
         }
     );
