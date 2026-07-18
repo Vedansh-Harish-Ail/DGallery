@@ -1337,7 +1337,7 @@ img {
 }
 
 .instagram-scroll-wrapper {
-    perspective: 1500px;
+    perspective: 850px;
     transform-style: preserve-3d;
     width: 100%;
     display: flex;
@@ -1346,7 +1346,7 @@ img {
 }
 
 .instagram-device-container {
-    transform: rotateX(55deg) scale(0.82) translateY(80px);
+    transform: rotateX(72deg) scale(0.75) translateY(120px);
     transform-origin: bottom center;
     transform-style: preserve-3d;
     background-color: #ffffff;
@@ -1384,7 +1384,7 @@ img {
     background-color: #000000;
     padding: 0;
     position: relative;
-    height: 520px; /* fixed height for mock preview */
+    height: 600px; /* fixed height for mock preview */
     overflow: hidden;
     display: block;
 }

@@ -744,11 +744,11 @@ function initInstagramScroll() {
 
     gsap.fromTo(container, 
         {
-            rotateX: 55, // tilted back heavily (sleeping/lying position)
-            scale: 0.82,
-            z: -80,
-            y: 80,
-            boxShadow: "0px 10px 15px rgba(0, 0, 0, 0.12), 0px 15px 30px rgba(0, 0, 0, 0.08)"
+            rotateX: 72, // tilted back heavily (sleeping/lying position)
+            scale: 0.75,
+            z: -150,
+            y: 120,
+            boxShadow: "0px 5px 10px rgba(0, 0, 0, 0.15), 0px 10px 20px rgba(0, 0, 0, 0.1)"
         },
         {
             rotateX: 0, // standing fully upright
@@ -761,7 +761,7 @@ function initInstagramScroll() {
                 trigger: '.instagram-section',
                 start: 'top bottom', // starts as soon as top of section enters viewport bottom
                 end: 'bottom center', // ends when bottom of section reaches viewport center
-                scrub: 1.2 // smooth interpolation
+                scrub: 1.5 // smooth interpolation
             }
         }
     );
