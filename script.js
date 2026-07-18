@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initGallery();
     initCompleteGalleryModal();
     initProcessFlow();
+    initInstagramScroll();
     initContactForm();
 });
 
@@ -723,4 +724,39 @@ function initProcessFlow() {
     });
 
     ScrollTrigger.refresh();
+}
+
+/* ==========================================================================
+   Instagram 3D Container Scroll Animation
+   ========================================================================== */
+function initInstagramScroll() {
+    const container = document.querySelector('.instagram-device-container');
+    if (!container) return;
+
+    // Check if user prefers reduced motion or is on mobile
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
+    // Register ScrollTrigger plugin
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.fromTo(container, 
+        {
+            rotateX: 16,
+            scale: 0.9,
+            z: -50
+        },
+        {
+            rotateX: 0,
+            scale: 1,
+            z: 0,
+            ease: 'power1.out',
+            scrollTrigger: {
+                trigger: '.instagram-section',
+                start: 'top bottom', // Start when the top of the section enters the bottom of the viewport
+                end: 'bottom center', // End when the bottom of the section reaches the center of the viewport
+                scrub: 1 // smooth scrubbing (1 second delay)
+            }
+        }
+    );
 }
