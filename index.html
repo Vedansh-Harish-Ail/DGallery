@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Darshana Art Gallery - A minimalist digital portfolio showcasing modern sumi-ink, charcoal, and line studies. Connect with private collectors and explore bespoke commissions.">
+    <title>Darshana Art Gallery | The Art of Silence</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header class="main-header" id="main-header">
+        <div class="header-container">
+            <a href="#hero" class="logo" id="logo-link">DARSHANA</a>
+            <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle Menu" aria-expanded="false">
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <nav class="nav-menu" id="nav-menu">
+                <ul>
+                    <li><a href="#gallery" class="nav-link" id="nav-link-gallery">Gallery</a></li>
+                    <li><a href="#journey" class="nav-link" id="nav-link-journey">Journey</a></li>
+                    <li><a href="#process" class="nav-link" id="nav-link-process">Process</a></li>
+                    <li><a href="#commissions" class="nav-link" id="nav-link-commissions">Commissions</a></li>
+                    <li><a href="#contact" class="nav-link nav-btn" id="nav-link-contact">Inquire</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section" id="hero" aria-label="Hero Section">
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <span class="hero-subtitle">Silent Curator Philosophy</span>
+                    <h1 class="hero-title">The Art of <br><span class="highlight">Silence</span></h1>
+                    <p class="hero-lead">An exploration of spatial void, textured charcoal, and the visceral energy of sumi-ink on paper.</p>
+                    <div class="hero-cta-group">
+                        <a href="#gallery" class="btn btn-primary" id="hero-btn-explore">Explore Collection</a>
+                        <a href="#journey" class="btn btn-secondary" id="hero-btn-journey">Read Philosophy</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-image-wrapper">
+                        <img src="assets/hero-artwork.png" alt="Featured sumi-ink abstract painting on textured paper" class="hero-image" id="hero-artwork-img">
+                        <div class="image-overlay-detail">
+                            <span class="artwork-spec-title">Silence in Form I</span>
+                            <span class="artwork-spec-meta">Sumi-ink on Washi, 2026</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <a href="#gallery" aria-label="Scroll down to gallery">
+                    <span class="scroll-dot"></span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="gallery-section" id="gallery" aria-label="Curated Gallery">
+            <div id="canvas-container"></div>
+            <div id="ui-layer">
+                <div class="slide-content" id="slide-0">
+                    <span class="catalogue-number">01 / Collection</span>
+                    <h1>Quietude <br>I</h1>
+                    <div class="description">
+                        Captured in the gentle light of early morning, this piece explores the boundaries between reality and abstraction. The soft textures invite the viewer to look closer, revealing layers of complexity hidden within the simplicity.
+                    </div>
+                    <div class="meta-grid">
+                        <span class="meta-label">Medium</span> <span class="meta-value">Sumi-ink on Washi</span>
+                        <span class="meta-label">Dimensions</span> <span class="meta-value">60 × 80 cm</span>
+                        <span class="meta-label">Year</span> <span class="meta-value">2026</span>
+                    </div>
+                    <button class="btn slide-inquire-btn" data-title="Quietude I" data-medium="Sumi-ink on Washi" data-size="60 × 80 cm" data-year="2026">Inquire About This Piece</button>
+                </div>
+
+                <div class="slide-content" id="slide-1">
+                    <span class="catalogue-number">02 / Collection</span>
+                    <h1>Resonance <br>IV</h1>
+                    <div class="description">
+                        A study in precision and balance. By stripping away organic chaos, the artist reveals the quiet mathematical purity that underlies nature. The composition demands a moment of stillness from its observer.
+                    </div>
+                    <div class="meta-grid">
+                        <span class="meta-label">Medium</span> <span class="meta-value">Charcoal on Cotton Paper</span>
+                        <span class="meta-label">Dimensions</span> <span class="meta-value">50 × 70 cm</span>
+                        <span class="meta-label">Year</span> <span class="meta-value">2026</span>
+                    </div>
+                    <button class="btn slide-inquire-btn" data-title="Resonance IV" data-medium="Charcoal on Cotton Paper" data-size="50 × 70 cm" data-year="2026">Inquire About This Piece</button>
+                </div>
+
+                <div class="slide-content" id="slide-2">
+                    <span class="catalogue-number">03 / Collection</span>
+                    <h1>Gesture <br>II</h1>
+                    <div class="description">
+                        The stroke of the brush captures the raw kinetic energy of the artist. The bleeding borders and high contrast represent a visual translation of a single, focused breath.
+                    </div>
+                    <div class="meta-grid">
+                        <span class="meta-label">Medium</span> <span class="meta-value">Sumi-ink & Charcoal on Washi</span>
+                        <span class="meta-label">Dimensions</span> <span class="meta-value">60 × 80 cm</span>
+                        <span class="meta-label">Year</span> <span class="meta-value">2025</span>
+                    </div>
+                    <button class="btn slide-inquire-btn" data-title="Gesture II" data-medium="Sumi-ink & Charcoal on Washi" data-size="60 × 80 cm" data-year="2025">Inquire About This Piece</button>
+                </div>
+
+                <div class="slide-content" id="slide-3">
+                    <span class="catalogue-number">04 / Collection</span>
+                    <h1>Linear <br>Meditation VII</h1>
+                    <div class="description">
+                        A minimalist approach challenging the viewer to find meaning in emptiness. The texture of the canvas itself becomes the primary subject, inviting a purely tactile visual experience without distraction.
+                    </div>
+                    <div class="meta-grid">
+                        <span class="meta-label">Medium</span> <span class="meta-value">Charcoal Line on Paper</span>
+                        <span class="meta-label">Dimensions</span> <span class="meta-value">40 × 50 cm</span>
+                        <span class="meta-label">Year</span> <span class="meta-value">2026</span>
+                    </div>
+                    <button class="btn slide-inquire-btn" data-title="Linear Meditation VII" data-medium="Charcoal Line on Paper" data-size="40 × 50 cm" data-year="2026">Inquire About This Piece</button>
+                </div>
+            </div>
+            
+            <button class="gallery-nav-btn prev" id="gallery-prev-btn" aria-label="Previous Slide">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button class="gallery-nav-btn next" id="gallery-next-btn" aria-label="Next Slide">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+            <div class="scroll-hint">Scroll over gallery to explore</div>
+            <button class="explore-all-btn" id="explore-all-btn">View Complete Collection</button>
+        </section>
+
+        <!-- The Creative Journey Section -->
+        <section class="journey-section" id="journey" aria-label="The Creative Journey">
+            <div class="container journey-container">
+                <div class="journey-image-area">
+                    <div class="portrait-frame">
+                        <img src="assets/artist-portrait.png" alt="Black and white portrait of the contemporary artist, Darshana" class="artist-portrait" id="artist-portrait-img">
+                        <div class="portrait-caption">Darshana in her Mumbai Studio, 2026.</div>
+                    </div>
+                </div>
+                <div class="journey-content-area">
+                    <span class="section-label">Biography & Philosophy</span>
+                    <h2 class="journey-title">The Curated Void</h2>
+                    <p class="journey-quote">"True composition does not begin when the brush meets the paper. It begins when the mind learns to let go of the need to fill space."</p>
+                    
+                    <div class="journey-bio">
+                        <p><span class="drop-cap">D</span>arshana is a contemporary South Asian visual artist whose work translates silence into form. Rooted in traditional sumi-ink washes and modern minimalist abstractions, her practice explores the delicate boundary between structural composition and natural expressionism. By stripping away extraneous colour, her monochrome compositions invite the viewer to breathe and contemplate.</p>
+                        <p>Her process is a dialogue with physical materials: handmade Japanese washi paper, natural charcoal dust, and raw, soot-based sumi inks. In her philosophy of the 'Silent Curator', each blank segment of the paper possesses the same structural weight and value as the boldest stroke of black ink. The result is a series of contemplative spaces that react to the lighting, environment, and psychology of the room they inhabit.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Methodology & Process Section (GSAP Story Scroll) -->
+        <section id="process" class="process-flow-section" aria-label="Studio Process">
+            <div id="process-flow-container" class="process-flow-container">
+                
+                <!-- Ritual Phase 01 -->
+                <div class="flow-section relative min-h-screen w-full overflow-hidden" data-flow-section aria-label="Ritual Phase 1">
+                    <div class="flow-art-container relative flex min-h-screen w-full flex-col justify-center px-[4vw] py-[4vw] will-change-transform" style="background-color: var(--bg-primary);">
+                        <div class="flow-grid container">
+                            <div class="flow-text-column">
+                                <span class="section-label">Methodology &bull; Phase 01</span>
+                                <h2 class="flow-heading">The Preparation of Ink</h2>
+                                <p class="flow-description">Sumi ink is ground by hand on a raw slate stone, mixing ink sticks made of compressed pine soot with natural mountain spring water. This slow process allows the mind to settle and align with the viscosity of the ink.</p>
+                            </div>
+                            <div class="flow-image-column">
+                                <div class="flow-image-wrapper">
+                                    <img src="assets/studio-ink-prep.png" alt="Hand-grinding sumi-ink on slate stone in art studio" class="flow-img">
+                                    <div class="image-accent-border"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ritual Phase 02 -->
+                <div class="flow-section relative min-h-screen w-full overflow-hidden" data-flow-section aria-label="Ritual Phase 2">
+                    <div class="flow-art-container relative flex min-h-screen w-full flex-col justify-center px-[4vw] py-[4vw] will-change-transform" style="background-color: var(--bg-secondary);">
+                        <div class="flow-grid container">
+                            <div class="flow-text-column">
+                                <span class="section-label">Methodology &bull; Phase 02</span>
+                                <h2 class="flow-heading">The Washi Choice</h2>
+                                <p class="flow-description">Selecting handmade mulberry paper (washi) with long fibers. The interaction of the fiber's absorbency and the water content of the ink determines the bleed, creating soft, uncontrolled halos around sharp, deliberate lines.</p>
+                            </div>
+                            <div class="flow-image-column">
+                                <div class="flow-image-wrapper">
+                                    <img src="assets/studio-washi-select.png" alt="Mulberry fibers washi paper textures close-up" class="flow-img">
+                                    <div class="image-accent-border"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ritual Phase 03 -->
+                <div class="flow-section relative min-h-screen w-full overflow-hidden" data-flow-section aria-label="Ritual Phase 3">
+                    <div class="flow-art-container relative flex min-h-screen w-full flex-col justify-center px-[4vw] py-[4vw] will-change-transform" style="background-color: var(--bg-primary);">
+                        <div class="flow-grid container">
+                            <div class="flow-text-column">
+                                <span class="section-label">Methodology &bull; Phase 03</span>
+                                <h2 class="flow-heading">The Kinetic Gesture</h2>
+                                <p class="flow-description">Executed in a single, unedited breath. Once ink hits the fibers of the paper, it cannot be altered. The gesture is a definitive, permanent capture of a single moment of focus, balance, and spatial intuition.</p>
+                            </div>
+                            <div class="flow-image-column">
+                                <div class="flow-image-wrapper">
+                                    <img src="assets/studio-process.png" alt="Resting calligraphy brush on Mumbai studio desk slate container" class="flow-img">
+                                    <div class="image-accent-border"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Collector Testimonials Section (GSAP Columns Marquee) -->
+        <section class="testimonials-section" id="testimonials" aria-label="Collector Testimonials">
+            <div class="testimonials-container">
+                <div class="section-header text-center">
+                    <div class="testimonial-badge">Testimonials</div>
+                    <h2 class="section-title">Collector Insights</h2>
+                    <p class="section-subtitle">Reflections on minimalist abstractions, materiality, and space.</p>
+                </div>
+
+                <div class="testimonials-grid-wrapper">
+                    <!-- Column 1 (Scrolls Up) -->
+                    <div class="testimonial-column column-up">
+                        <div class="column-track">
+                            <!-- Card 1 -->
+                            <div class="testimonial-card-v2">
+                                <blockquote class="quote-text">
+                                    "Darshana's work brings a rare, contemplative stillness to our private collection. The way the charcoal catches the light throughout the day creates a dynamic, shifting spatial relationship."
+                                </blockquote>
+                                <div class="author-info">
+                                    <div class="avatar initials-ks">KS</div>
+                                    <div class="author-details">
+                                        <span class="author-name">Dr. Kenji Sato</span>
+                                        <span class="author-title">Private Collector, Tokyo</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Card 2 -->
+                            <div class="testimonial-card-v2">
+                                <blockquote class="quote-text">
+                                    "The sumi-ink washes from her collection have become the focal point of our design projects. They bridge the gap between traditional aesthetics and international minimalism."
+                                </blockquote>
+                                <div class="author-info">
+                                    <div class="avatar initials-am">AM</div>
+                                    <div class="author-details">
+                                        <span class="author-name">Ananya Mehta</span>
+                                        <span class="author-title">Interior Designer, Mumbai</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Duplicated for Loop -->
+                            <div class="testimonial-card-v2">
+                                <blockquote class="quote-text">
+                                    "Darshana's work brings a rare, contemplative stillness to our private collection. The way the charcoal catches the light throughout the day creates a dynamic, shifting spatial relationship."
+                                </blockquote>
+                                <div class="author-info">
+                                    <div class="avatar initials-ks">KS</div>
+                                    <div class="author-details">
+                                        <span class="author-name">Dr. Kenji Sato</span>
+                                        <span class="author-title">Private Collector, Tokyo</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="testimonial-card-v2">
+                                <blockquote class="quote-text">
+                                    "The sumi-ink washes from her collection have become the focal point of our design projects. They bridge the gap between traditional aesthetics and international minimalism."
+                                </blockquote>
+                                <div class="author-info">
+                                    <div class="avatar initials-am">AM</div>
+                                    <div class="author-details">
+                                        <span class="author-name">Ananya Mehta</span>
+                                        <span class="author-title">Interior Designer, Mumbai</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Column 2 (Scrolls Down) -->
+                    <div class="testimonial-column column-down">
+                        <div class="column-track">
+                            <!-- Card 3 -->
+                            <div class="testimonial-card-v2">
+                                <blockquote class="quote-text">
+                                    "An extraordinary masterclass in visual economy. In an era dominated by digital noise, Darshana's compositions offer a profound, restorative silence. Her line studies are exceptionally precise."
+                                </blockquote>
+                                <div class="author-info">
+                                    <div class="avatar initials-er">ER</div>
+                                    <div class="author-details">
+                                        <span class="author-name">Elena Rostova</span>
+                                        <span class="author-title">Art Critic, London Fine Art Review</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Card 4 -->
+                            <div class="testimonial-card-v2">
+                                <blockquote class="quote-text">
+                                    "Darshana's silent spaces challenge the viewer. She doesn't dictate what to feel; instead, her canvases offer a container for the viewer's own thoughts and breath."
+                                </blockquote>
+                                <div class="author-info">
+                                    <div class="avatar initials-sj">SJ</div>
+                                    <div class="author-details">
+                                        <span class="author-name">Sarah Jenkins</span>
+                                        <span class="author-title">Art Curator, New York</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Duplicated for Loop -->
+                            <div class="testimonial-card-v2">
+                                <blockquote class="quote-text">
+                                    "An extraordinary masterclass in visual economy. In an era dominated by digital noise, Darshana's compositions offer a profound, restorative silence. Her line studies are exceptionally precise."
+                                </blockquote>
+                                <div class="author-info">
+                                    <div class="avatar initials-er">ER</div>
+                                    <div class="author-details">
+                                        <span class="author-name">Elena Rostova</span>
+                                        <span class="author-title">Art Critic, London Fine Art Review</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="testimonial-card-v2">
+                                <blockquote class="quote-text">
+                                    "Darshana's silent spaces challenge the viewer. She doesn't dictate what to feel; instead, her canvases offer a container for the viewer's own thoughts and breath."
+                                </blockquote>
+                                <div class="author-info">
+                                    <div class="avatar initials-sj">SJ</div>
+                                    <div class="author-details">
+                                        <span class="author-name">Sarah Jenkins</span>
+                                        <span class="author-title">Art Curator, New York</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Column 3 (Scrolls Up) -->
+                    <div class="testimonial-column column-up">
+                        <div class="column-track">
+                            <!-- Card 5 -->
+                            <div class="testimonial-card-v2">
+                                <blockquote class="quote-text">
+                                    "The abstract installations commissioned for our minimalist residential project in Zurich have transformed the entire atmosphere. Her sensitivity to space and materiality is work of a master."
+                                </blockquote>
+                                <div class="author-info">
+                                    <div class="avatar initials-mb">MB</div>
+                                    <div class="author-details">
+                                        <span class="author-name">Marc van der Berg</span>
+                                        <span class="author-title">Principal Architect, Zurich</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Card 6 -->
+                            <div class="testimonial-card-v2">
+                                <blockquote class="quote-text">
+                                    "A rare combination of discipline and gesture. Her choice of handmade washi paper makes each ink bleed unique, creating a highly tactile experience that digital prints can never replicate."
+                                </blockquote>
+                                <div class="author-info">
+                                    <div class="avatar initials-vm">VM</div>
+                                    <div class="author-details">
+                                        <span class="author-name">Vikram Malhotra</span>
+                                        <span class="author-title">Fine Art Advisor, New Delhi</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Duplicated for Loop -->
+                            <div class="testimonial-card-v2">
+                                <blockquote class="quote-text">
+                                    "The abstract installations commissioned for our minimalist residential project in Zurich have transformed the entire atmosphere. Her sensitivity to space and materiality is work of a master."
+                                </blockquote>
+                                <div class="author-info">
+                                    <div class="avatar initials-mb">MB</div>
+                                    <div class="author-details">
+                                        <span class="author-name">Marc van der Berg</span>
+                                        <span class="author-title">Principal Architect, Zurich</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="testimonial-card-v2">
+                                <blockquote class="quote-text">
+                                    "A rare combination of gesture and control. Her choice of handmade washi paper makes each ink bleed unique, creating a highly tactile experience that digital prints can never replicate."
+                                </blockquote>
+                                <div class="author-info">
+                                    <div class="avatar initials-vm">VM</div>
+                                    <div class="author-details">
+                                        <span class="author-name">Vikram Malhotra</span>
+                                        <span class="author-title">Fine Art Advisor, New Delhi</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Commission Guidelines Section -->
+        <section class="commissions-section" id="commissions" aria-label="Commission Guidelines">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-label">Bespoke Works</span>
+                    <h2 class="section-title">Commission Guidelines</h2>
+                    <p class="section-subtitle">Darshana accepts a limited number of custom commissions each year for private residences, commercial lobbies, and institutions.</p>
+                </div>
+
+                <div class="commission-grid">
+                    <!-- Commission Card 1 -->
+                    <div class="commission-card">
+                        <div class="commission-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 0 0-16 0"/></svg>
+                        </div>
+                        <h3 class="commission-title">Portrait Commissions</h3>
+                        <p class="commission-description">Minimalist line and shadow interpretations that capture the posture and emotional essence of the subject. Requires a preliminary sitting or high-quality photographic reference studies.</p>
+                        <span class="commission-details">Ink on Washi / Medium scale</span>
+                    </div>
+
+                    <!-- Commission Card 2 -->
+                    <div class="commission-card">
+                        <div class="commission-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg>
+                        </div>
+                        <h3 class="commission-title">Architectural Studies</h3>
+                        <p class="commission-description">Site-specific ink studies reacting directly to the light patterns, textures, and lines of modern minimalist interiors. Tailored specifically to coordinate with clean, architectural surfaces.</p>
+                        <span class="commission-details">Charcoal & Ink / Large scale</span>
+                    </div>
+
+                    <!-- Commission Card 3 -->
+                    <div class="commission-card">
+                        <div class="commission-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        </div>
+                        <h3 class="commission-title">Abstract Installations</h3>
+                        <p class="commission-description">Large-scale multi-panel installations or hanging scrolls designed to define spatial boundaries and introduce organic rhythms into lobbies, boardrooms, and galleries.</p>
+                        <span class="commission-details">Multi-panel canvases / Institutional scale</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Acquire & Commission Section -->
+        <section class="contact-section" id="contact" aria-label="Acquire and Contact">
+            <div class="container contact-container">
+                <div class="contact-info">
+                    <span class="section-label">Acquire & Inquire</span>
+                    <h2 class="contact-title">Start a Dialogue</h2>
+                    <p class="contact-intro">For sales of curated artworks, catalogs, or custom commission requests, please contact the studio directly. We prioritize responses to private collectors and art consultants within 48 hours.</p>
+                    
+                    <div class="studio-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Studio Location</span>
+                            <span class="detail-val">Byculla East, Mumbai, India</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Represented By</span>
+                            <span class="detail-val">Galerie Alabaster (London / Tokyo)</span>
+                        </div>
+                    </div>
+
+                    <div class="direct-channels">
+                        <a href="mailto:studio@darshana-gallery.com" class="channel-link link-email" id="link-email">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                            <span>studio@darshana-gallery.com</span>
+                        </a>
+                        <a href="https://wa.me/919999999999?text=Hello%20Darshana%20Studio%2C%20I%20am%20interested%20in%20inquiring%20about%20your%20artwork." target="_blank" rel="noopener" class="channel-link link-whatsapp" id="link-whatsapp">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                            <span>Inquire via WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="contact-form-area">
+                    <form class="contact-form" id="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="form-name">Name</label>
+                                <input type="text" id="form-name" required placeholder="e.g., Arthur Pendelton">
+                            </div>
+                            <div class="form-group">
+                                <label for="form-email">Email Address</label>
+                                <input type="email" id="form-email" required placeholder="e.g., arthur@collection.com">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="form-interest">Inquiry Type</label>
+                            <select id="form-interest" required>
+                                <option value="" disabled selected>Select an option...</option>
+                                <option value="acquire">Acquire Curated Work</option>
+                                <option value="portrait">Portrait Commission</option>
+                                <option value="architectural">Architectural Study Commission</option>
+                                <option value="abstract">Abstract Installation Commission</option>
+                                <option value="press">Press & Exhibition Query</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="form-message">Message</label>
+                            <textarea id="form-message" rows="6" required placeholder="Detail your project, dimensions, or specific interest..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block" id="form-submit-btn">Send Inquiry</button>
+                        <div class="form-feedback" id="form-feedback" aria-live="polite"></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container footer-container">
+            <span class="footer-logo">DARSHANA</span>
+            <span class="copyright">&copy; 2026 Darshana. All Rights Reserved. designed in silence.</span>
+            <div class="social-links">
+                <a href="https://instagram.com/darshana.studio" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
+                <a href="#" aria-label="Artsy">Artsy</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox-modal" id="lightbox-modal" aria-hidden="true" role="dialog">
+        <button class="lightbox-close" id="lightbox-close" aria-label="Close Lightbox">&times;</button>
+        <div class="lightbox-content">
+            <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Previous Artwork">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            </button>
+            <div class="lightbox-image-container">
+                <img src="" alt="" class="lightbox-img" id="lightbox-img">
+            </div>
+            <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Next Artwork">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+            <div class="lightbox-caption">
+                <div class="lightbox-info">
+                    <h2 class="lightbox-title" id="lightbox-title">Artwork Title</h2>
+                    <p class="lightbox-details-text"><span id="lightbox-medium">Medium</span> &bull; <span id="lightbox-size">Dimensions</span> &bull; <span id="lightbox-year">Year</span></p>
+                </div>
+                <button class="btn btn-primary btn-sm lightbox-inquire" id="lightbox-inquire-btn">Inquire About This Piece</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Social Contacts (Right Side Vertical) -->
+    <div class="floating-social-widget" id="floating-social-widget">
+        <a href="https://wa.me/919999999999?text=Hello%20Darshana%20Studio%2C%20I%20am%20interested%20in%20inquiring%20about%20your%20artwork." target="_blank" rel="noopener" class="floating-social-btn whatsapp-floating" aria-label="Inquire via WhatsApp">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            <span class="floating-social-tooltip">WhatsApp</span>
+        </a>
+        <a href="https://instagram.com/darshana.studio" target="_blank" rel="noopener" class="floating-social-btn instagram-floating" aria-label="Follow on Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37zM17.5 6.5h.01"/></svg>
+            <span class="floating-social-tooltip">Instagram</span>
+        </a>
+    </div>
+
+    <!-- Complete Collection Modal -->
+    <div id="full-gallery-modal" class="full-gallery-modal" role="dialog" aria-modal="true" aria-labelledby="full-gallery-title" aria-hidden="true">
+        <div class="full-gallery-content">
+            <button class="full-gallery-close" id="full-gallery-close" aria-label="Close Gallery">&times;</button>
+            <h2 id="full-gallery-title">Complete Collection</h2>
+            <p class="full-gallery-subtitle">An archive of minimalist paintings, charcoal drawings, and ink studies.</p>
+            
+            <!-- Modal Filters -->
+            <div class="modal-filters" id="modal-filters" role="tablist" aria-label="Gallery Categories">
+                <button class="modal-filter-btn active" data-filter="all" role="tab" aria-selected="true">All Works</button>
+                <button class="modal-filter-btn" data-filter="ink" role="tab" aria-selected="false">Sumi-Ink</button>
+                <button class="modal-filter-btn" data-filter="charcoal" role="tab" aria-selected="false">Charcoal</button>
+                <button class="modal-filter-btn" data-filter="line" role="tab" aria-selected="false">Line Studies</button>
+            </div>
+            
+            <!-- Modal Grid -->
+            <div class="modal-artwork-grid" id="modal-artwork-grid">
+                <!-- Artwork 1 -->
+                <div class="modal-artwork-card" data-category="ink">
+                    <img src="assets/artwork-ink-1.png" alt="Sumi-ink gesture painting showing expressive brush bristles">
+                    <h4>Quietude I</h4>
+                    <p>Sumi-ink on Washi</p>
+                    <span>60 × 80 cm &bull; 2026</span>
+                </div>
+                <!-- Artwork 2 -->
+                <div class="modal-artwork-card" data-category="charcoal">
+                    <img src="assets/artwork-charcoal-1.png" alt="Abstract charcoal drawing showing deep textured gradients and soft shadows">
+                    <h4>Resonance IV</h4>
+                    <p>Charcoal on Cotton Paper</p>
+                    <span>50 × 70 cm &bull; 2026</span>
+                </div>
+                <!-- Artwork 3 -->
+                <div class="modal-artwork-card" data-category="ink">
+                    <img src="assets/artwork-ink-2.png" alt="Geometric sumi-ink painting featuring circular washes and clean lines">
+                    <h4>Gesture II</h4>
+                    <p>Sumi-ink & Charcoal on Washi</p>
+                    <span>60 × 80 cm &bull; 2025</span>
+                </div>
+                <!-- Artwork 4 -->
+                <div class="modal-artwork-card" data-category="line">
+                    <img src="assets/artwork-line-1.png" alt="Minimalist abstract charcoal line drawing on white textured paper">
+                    <h4>Linear Meditation VII</h4>
+                    <p>Charcoal Line on Paper</p>
+                    <span>40 × 50 cm &bull; 2026</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Lenis Smooth Scroll -->
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.36/dist/lenis.min.js"></script>
+    <!-- Script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="script.js" defer></script>
+</body>
+</html>
