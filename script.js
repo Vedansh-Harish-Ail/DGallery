@@ -323,16 +323,52 @@ function initGallery() {
 
     let currentScroll = 0;
     let targetScroll = 0;
-    let snapTimer = null;
     let mouse = { x: 0, y: 0 };
     let startX = 0;
-    let scrollStartX = 0;
     let touchStartY = 0;
     const maxScroll = (CONFIG.slideCount - 1) * CONFIG.spacingX;
 
-    function snapToNearest() {
-        const index = Math.round(targetScroll / CONFIG.spacingX);
-        targetScroll = Math.max(0, Math.min(maxScroll, index * CONFIG.spacingX));
+    // Register ScrollTrigger
+    gsap.registerPlugin(ScrollTrigger);
+
+    // ScrollTrigger setup for pinning and horizontal progression
+    const scrollDuration = window.innerHeight * 2.5;
+    
+    const galleryTrigger = ScrollTrigger.create({
+        trigger: '.gallery-section',
+        start: 'top top',
+        end: () => `+=${scrollDuration}`,
+        pin: true,
+        scrub: true,
+        snap: {
+            snapTo: 1 / (CONFIG.slideCount - 1),
+            duration: { min: 0.2, max: 0.5 },
+            delay: 0.1,
+            ease: 'power1.inOut'
+        },
+        onUpdate: (self) => {
+            targetScroll = self.progress * maxScroll;
+        }
+    });
+
+    function goToSlide(index) {
+        if (!galleryTrigger) return;
+        const progress = index / (CONFIG.slideCount - 1);
+        const start = galleryTrigger.start;
+        const end = galleryTrigger.end;
+        const targetY = start + progress * (end - start);
+        
+        if (window.lenis) {
+            window.lenis.scrollTo(targetY, {
+                duration: 1.2,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+            });
+        } else {
+            window.scrollTo({
+                top: targetY,
+                behavior: 'smooth'
+            });
+        }
     }
 
     window.addEventListener('mousemove', (e) => {
@@ -346,89 +382,47 @@ function initGallery() {
     if (prevBtn && nextBtn) {
         prevBtn.addEventListener('click', () => {
             const index = Math.round(targetScroll / CONFIG.spacingX);
-            targetScroll = Math.max(0, (index - 1) * CONFIG.spacingX);
-            if (snapTimer) clearTimeout(snapTimer);
+            const targetIndex = Math.max(0, index - 1);
+            goToSlide(targetIndex);
         });
 
         nextBtn.addEventListener('click', () => {
             const index = Math.round(targetScroll / CONFIG.spacingX);
-            targetScroll = Math.min(maxScroll, (index + 1) * CONFIG.spacingX);
-            if (snapTimer) clearTimeout(snapTimer);
+            const targetIndex = Math.min(CONFIG.slideCount - 1, index + 1);
+            goToSlide(targetIndex);
         });
     }
 
-    // Scroll gallery on wheel over the canvas container, but only when section is centered on screen
-    canvasContainer.addEventListener('wheel', (e) => {
-        const rect = canvasContainer.getBoundingClientRect();
-        const isCentered = Math.abs(rect.top) < 100;
-        
-        if (!isCentered) {
-            return;
-        }
-
-        const isHorizontal = Math.abs(e.deltaX) > Math.abs(e.deltaY);
-        const scrollDelta = isHorizontal ? e.deltaX : e.deltaY;
-        const scrollAmount = scrollDelta * 0.15;
-        const newScroll = targetScroll + scrollAmount;
-        
-        // Intercept scroll down: lock if targetScroll < maxScroll OR if last picture hasn't fully snapped/lerped in
-        if (scrollAmount > 0) {
-            if (targetScroll < maxScroll || Math.abs(currentScroll - maxScroll) > 0.1) {
-                e.preventDefault();
-                // Snap page scroll to perfect center instantly to align layout
-                if (Math.abs(rect.top) > 5) {
-                    if (window.lenis) {
-                        window.lenis.scrollTo(window.scrollY + rect.top, { immediate: true });
-                    } else {
-                        window.scrollTo({ top: window.scrollY + rect.top, behavior: 'auto' });
-                    }
-                }
-                targetScroll = Math.min(maxScroll, newScroll);
-                if (snapTimer) clearTimeout(snapTimer);
-                snapTimer = setTimeout(snapToNearest, CONFIG.snapDelay);
-            }
-        } 
-        // Intercept scroll up: lock if targetScroll > 0 OR if first picture hasn't fully snapped/lerped back
-        else if (scrollAmount < 0) {
-            if (targetScroll > 0 || Math.abs(currentScroll - 0) > 0.1) {
-                e.preventDefault();
-                // Snap page scroll to perfect center instantly to align layout
-                if (Math.abs(rect.top) > 5) {
-                    if (window.lenis) {
-                        window.lenis.scrollTo(window.scrollY + rect.top, { immediate: true });
-                    } else {
-                        window.scrollTo({ top: window.scrollY + rect.top, behavior: 'auto' });
-                    }
-                }
-                targetScroll = Math.max(0, newScroll);
-                if (snapTimer) clearTimeout(snapTimer);
-                snapTimer = setTimeout(snapToNearest, CONFIG.snapDelay);
-            }
-        }
-    }, { passive: false });
-
-    // Touch Swipe Support for Mobile
+    // Touch Swipe Support for Mobile (translating horizontal swipe to vertical page scroll)
+    let touchStartScrollY = 0;
     canvasContainer.addEventListener('touchstart', (e) => {
         startX = e.touches[0].clientX;
         touchStartY = e.touches[0].clientY;
-        scrollStartX = targetScroll;
-        if (snapTimer) clearTimeout(snapTimer);
+        touchStartScrollY = window.scrollY;
     }, { passive: true });
     
     canvasContainer.addEventListener('touchmove', (e) => {
         const deltaX = startX - e.touches[0].clientX;
         const deltaY = touchStartY - e.touches[0].clientY;
         
-        // If horizontal swipe is dominant, slide the gallery and prevent vertical page scrolling
+        // If horizontal swipe is dominant, slide the gallery by scrolling the page
         if (Math.abs(deltaX) > Math.abs(deltaY)) {
             if (e.cancelable) e.preventDefault();
-            targetScroll = Math.max(0, Math.min(maxScroll, scrollStartX + deltaX * 0.4));
+            
+            const scrollScale = 1.2; // Sensitivity multiplier for horizontal-to-vertical translation
+            if (galleryTrigger) {
+                const start = galleryTrigger.start;
+                const end = galleryTrigger.end;
+                const targetY = Math.max(start, Math.min(end, touchStartScrollY + deltaX * scrollScale));
+                
+                if (window.lenis) {
+                    window.lenis.scrollTo(targetY, { immediate: true });
+                } else {
+                    window.scrollTo(0, targetY);
+                }
+            }
         }
     }, { passive: false });
-
-    canvasContainer.addEventListener('touchend', () => {
-        snapToNearest();
-    });
 
     function updateUI(scrollX) {
         const rawIndex = Math.round(scrollX / CONFIG.spacingX);            
