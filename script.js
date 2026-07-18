@@ -747,7 +747,7 @@ function initInstagramScroll() {
             rotateX: 72, // tilted back heavily (sleeping/lying position)
             scale: 0.75,
             z: -150,
-            y: 120,
+            y: 50,
             boxShadow: "0px 5px 10px rgba(0, 0, 0, 0.15), 0px 10px 20px rgba(0, 0, 0, 0.1)"
         },
         {

@@ -1331,9 +1331,13 @@ img {
 
 /* Instagram Showcase Section (Aceternity 3D Scroll Replica) */
 .instagram-section {
-    padding: var(--spacing-lg) 0;
+    padding: 3rem 0; /* reduced from var(--spacing-lg) */
     background-color: var(--bg-secondary);
     overflow: hidden;
+}
+
+.instagram-section .section-header {
+    margin-bottom: 2.5rem; /* reduced from 5rem */
 }
 
 .instagram-scroll-wrapper {
@@ -1342,11 +1346,11 @@ img {
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: 3rem 0 6rem 0;
+    padding: 1.5rem 0 2rem 0; /* reduced from 3rem 0 6rem 0 */
 }
 
 .instagram-device-container {
-    transform: rotateX(72deg) scale(0.75) translateY(120px);
+    transform: rotateX(72deg) scale(0.75) translateY(50px); /* reduced from 120px */
     transform-origin: bottom center;
     transform-style: preserve-3d;
     background-color: #ffffff;
@@ -1470,7 +1474,7 @@ img {
 
 /* Contact Section */
 .contact-section {
-    padding: var(--spacing-lg) 0;
+    padding: 4rem 0 var(--spacing-lg) 0; /* reduced top padding */
     background-color: var(--bg-primary);
     border-top: 1px solid var(--border-light);
 }
@@ -2222,7 +2226,7 @@ img {
     
     /* Instagram Mobile */
     .instagram-scroll-wrapper {
-        padding: 1.5rem 0 3rem 0;
+        padding: 1rem 0;
     }
     .instagram-device-container {
         transform: rotateX(10deg) scale(0.95);
