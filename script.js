@@ -5,23 +5,20 @@
  */
 
 let isNavigating = false;
+window.isNavigating = false;
+let navHideTimeout = null;
 
-function temporarilyDisableNavHide() {
+function temporarilyDisableNavHide(duration = 3000) {
     isNavigating = true;
+    window.isNavigating = true;
     const header = document.getElementById('main-header');
     if (header) header.classList.remove('nav-hidden');
     
-    const handleScrollEnd = () => {
+    if (navHideTimeout) clearTimeout(navHideTimeout);
+    navHideTimeout = setTimeout(() => {
         isNavigating = false;
-        window.removeEventListener('scrollend', handleScrollEnd);
-    };
-    
-    window.addEventListener('scrollend', handleScrollEnd);
-    
-    setTimeout(() => {
-        isNavigating = false;
-        window.removeEventListener('scrollend', handleScrollEnd);
-    }, 1000);
+        window.isNavigating = false;
+    }, duration);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -58,26 +55,52 @@ function initLenis() {
 
     gsap.ticker.lagSmoothing(0);
 
+    window.lenis = lenis;
+
     // Integrate with anchor link clicks
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
-            e.preventDefault();
             const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
+            if (!targetId || targetId === '#') return;
             const targetEl = document.querySelector(targetId);
             if (targetEl) {
-                temporarilyDisableNavHide();
+                e.preventDefault();
+
+                // Close mobile nav if open
+                const menu = document.getElementById('nav-menu');
+                const toggle = document.getElementById('mobile-nav-toggle');
+                if (menu && menu.classList.contains('active')) {
+                    menu.classList.remove('active');
+                    if (toggle) {
+                        toggle.classList.remove('active');
+                        toggle.setAttribute('aria-expanded', 'false');
+                    }
+                    document.body.classList.remove('no-scroll');
+                }
+
+                temporarilyDisableNavHide(3000);
+
+                if (window.isGalleryPinned !== undefined) {
+                    window.isGalleryPinned = false;
+                }
+
+                const targetTop = Math.max(0, targetEl.getBoundingClientRect().top + window.scrollY - 90);
+
+                if (window.lenis) {
+                    window.lenis.start();
+                    window.lenis.scrollTo(targetTop, {
+                        duration: 1.2,
+                        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+                    });
+                }
                 
-                lenis.scrollTo(targetEl, {
-                    offset: 0,
-                    duration: 1.2,
-                    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+                window.scrollTo({
+                    top: targetTop,
+                    behavior: 'smooth'
                 });
             }
         });
     });
-
-    window.lenis = lenis;
 }
 
 /* ==========================================================================
@@ -85,14 +108,18 @@ function initLenis() {
    ========================================================================== */
 function initHeaderScroll() {
     const header = document.getElementById('main-header');
+    const menu = document.getElementById('nav-menu');
+    if (!header) return;
+
     let lastScrollY = window.scrollY;
     
     const handleScroll = () => {
-        if (isNavigating) {
+        if (isNavigating || (menu && menu.classList.contains('active'))) {
             header.classList.remove('nav-hidden');
             lastScrollY = window.scrollY;
             return;
         }
+        
         const currentScrollY = window.scrollY;
         
         if (currentScrollY > 50) {
@@ -103,11 +130,11 @@ function initHeaderScroll() {
         
         const scrollDifference = currentScrollY - lastScrollY;
         
-        if (currentScrollY > 5) {
-            if (scrollDifference > 5) {
+        if (currentScrollY > 100) {
+            if (scrollDifference > 8) {
                 // Scrolling down -> disappear
                 header.classList.add('nav-hidden');
-            } else if (scrollDifference < -5) {
+            } else if (scrollDifference < -8) {
                 // Scrolling up -> appear immediately
                 header.classList.remove('nav-hidden');
             }
@@ -128,7 +155,9 @@ function initHeaderScroll() {
 function initMobileNav() {
     const toggle = document.getElementById('mobile-nav-toggle');
     const menu = document.getElementById('nav-menu');
-    const links = document.querySelectorAll('.nav-menu a');
+    if (!toggle || !menu) return;
+
+    const links = menu.querySelectorAll('a');
     
     const toggleMenu = () => {
         const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
@@ -138,15 +167,9 @@ function initMobileNav() {
         document.body.classList.toggle('no-scroll');
     };
     
-    toggle.addEventListener('click', toggleMenu);
-    
-    // Close menu when a link is clicked
-    links.forEach(link => {
-        link.addEventListener('click', () => {
-            if (menu.classList.contains('active')) {
-                toggleMenu();
-            }
-        });
+    toggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleMenu();
     });
     
     // Close menu when clicking outside of it
@@ -164,28 +187,29 @@ function initScrollSpy() {
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-menu a:not(.nav-btn)');
     
+    if (!sections.length || !navLinks.length) return;
+
     const handleScrollSpy = () => {
         let currentSectionId = '';
-        const scrollPosition = window.scrollY + 120; // Offset for header height
         
         sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            
-            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            const rect = section.getBoundingClientRect();
+            if (rect.top <= 220 && rect.bottom >= 120) {
                 currentSectionId = section.getAttribute('id');
             }
         });
         
         navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${currentSectionId}`) {
+            const href = link.getAttribute('href');
+            if (href === `#${currentSectionId}`) {
                 link.classList.add('active');
+            } else {
+                link.classList.remove('active');
             }
         });
     };
     
-    window.addEventListener('scroll', handleScrollSpy);
+    window.addEventListener('scroll', handleScrollSpy, { passive: true });
     handleScrollSpy();
 }
 
@@ -360,10 +384,16 @@ function initCompleteGalleryModal() {
             }
             
             // Scroll to form
-            temporarilyDisableNavHide();
+            temporarilyDisableNavHide(2500);
             const contactSection = document.getElementById('contact');
             if (contactSection) {
-                contactSection.scrollIntoView({ behavior: 'smooth' });
+                if (window.lenis) {
+                    window.lenis.start();
+                    window.lenis.scrollTo(contactSection, { offset: -90, duration: 1.2 });
+                } else {
+                    const targetTop = contactSection.getBoundingClientRect().top + window.scrollY - 90;
+                    window.scrollTo({ top: targetTop, behavior: 'smooth' });
+                }
             }
         });
     });

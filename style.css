@@ -76,6 +76,10 @@ body {
     width: 100%;
 }
 
+body.no-scroll {
+    overflow: hidden !important;
+}
+
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-serif);
@@ -197,8 +201,9 @@ img {
 .main-header {
     position: fixed;
     top: 1.5rem;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
+    right: 0;
+    margin: 0 auto;
     width: 90%;
     max-width: var(--max-width);
     height: 64px;
@@ -219,7 +224,7 @@ img {
 }
 
 .main-header.nav-hidden {
-    transform: translate(-50%, -150%);
+    transform: translateY(-150%);
 }
 
 .header-container {
@@ -271,11 +276,13 @@ img {
     transform: translateX(-50%);
 }
 
-.nav-link:hover {
+.nav-link:hover,
+.nav-link.active {
     color: var(--text-primary);
 }
 
-.nav-link:hover::after {
+.nav-link:hover::after,
+.nav-link.active::after {
     width: 100%;
 }
 
@@ -1994,42 +2001,49 @@ img {
         top: 1rem;
         height: 52px;
         width: 92%;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
     }
     
     .header-container {
-        padding: 0 1.5rem;
+        padding: 0 1.2rem;
     }
     
     .logo {
         font-size: 1.15rem;
+        z-index: 1002;
     }
     
     .mobile-nav-toggle {
         display: flex;
-        width: 20px;
-        height: 12px;
+        width: 24px;
+        height: 16px;
+        z-index: 1002;
     }
     
     .mobile-nav-toggle.active .bar:nth-child(1) {
-        transform: translateY(5px) rotate(45deg);
+        transform: translateY(7px) rotate(45deg);
     }
     
     .mobile-nav-toggle.active .bar:nth-child(2) {
-        transform: translateY(-5.5px) rotate(-45deg);
+        transform: translateY(-7px) rotate(-45deg);
     }
     
     .nav-menu {
         position: fixed;
         top: 0;
         right: 0;
-        width: 75%;
+        width: 80vw;
+        max-width: 320px;
         height: 100vh;
         background-color: var(--bg-primary);
-        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.05);
-        padding: 5rem 2rem;
+        box-shadow: -10px 0 30px rgba(18, 18, 18, 0.12);
+        padding: 6rem 2rem 3rem;
         transform: translateX(100%);
         transition: transform var(--transition-smooth);
-        z-index: 1000;
+        z-index: 1001;
+        border-left: 1px solid var(--border-medium);
     }
     
     .nav-menu.active {
@@ -2039,7 +2053,7 @@ img {
     .nav-menu ul {
         flex-direction: column;
         align-items: flex-start;
-        gap: 1.5rem;
+        gap: 1.8rem;
     }
     
     .nav-link {
